@@ -107,4 +107,21 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch(state){
+
+      case AppLifecycleState.detached:
+        // TODO: Handle this case.
+      case AppLifecycleState.resumed:
+        detector.startListening();
+      case AppLifecycleState.inactive:
+        // TODO: Handle this case.
+      case AppLifecycleState.hidden:
+        // TODO: Handle this case.
+      case AppLifecycleState.paused:
+        detector.stopListening();
+    }
+  }
 }
